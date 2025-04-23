@@ -10,6 +10,10 @@
     {
       "src": "/api/(.*)",
       "dest": "/api/$1"
+    },
+    { // <-- Esta es la nueva regla que añades
+      "source": "/property/:id",
+      "destination": "/api/render?id=:id"
     }
   ]
 }
