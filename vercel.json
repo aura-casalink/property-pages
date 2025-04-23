@@ -6,13 +6,13 @@
       "use": "@vercel/next"
     }
   ],
-  "routes": 
+  "routes": [
     {
       "src": "/api/(.*)",
       "dest": "/api/$1"
     }
   ],
-  "rewrites": 
+  "rewrites": [
     {
       "source": "/property/:id",
       "destination": "/api/render?id=:id"
