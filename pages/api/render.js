@@ -1,14 +1,14 @@
 export default async (req, res) => {
-  const { id } = req.query;
+  const { id, session } = req.query;
 
   // 1. Validación del ID
   if (!id) {
     return res.status(400).send(`
       <html>
         <body style="font-family: Arial; padding: 20px;">
-          <h1>Error: Falta ID</h1>
-          <p>Ejemplo de uso correcto:</p>
-          <code>https://property-pages-one.vercel.app/api/render?id=107807879</code>
+          <h1>Error: Falta ID de Propiedad</h1>
+          <p>Formato de URL esperado:</p>
+          <code>https://www.propiedades.aura-app.es/[ID_PROPIEDAD]/[ID_SESION]</code>
         </body>
       </html>
     `);
@@ -28,7 +28,7 @@ export default async (req, res) => {
 
     // 4. Enviar respuesta exitosa
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
-    res.setHeader('Cache-Control', 'public, max-age=3600');
+    res.setHeader('Cache-Control', 'public, max-age=60');
     res.send(html);
 
   } catch (error) {
@@ -36,11 +36,11 @@ export default async (req, res) => {
     res.status(500).send(`
       <html>
         <body style="font-family: Arial; padding: 20px;">
-          <h1>Error al cargar la propiedad</h1>
-          <p><strong>ID:</strong> ${id}</p>
-          <p><strong>Error:</strong> ${error.message}</p>
-          <p>Verifica que el archivo exista en Supabase:</p>
-          <code>property-${id}.html</code>
+          <h1>Error interno al cargar la propiedad</h1>
+          <p><strong>ID Propiedad:</strong> ${id}</p>
+          <p><strong>ID Sesión:</strong> ${session || 'No proporcionado'}</p>
+          <p><strong>Detalle:</strong> ${error.message}</p>
+          <p>Por favor, intenta más tarde o contacta con soporte.</p>
         </body>
       </html>
     `);
