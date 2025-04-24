@@ -9,7 +9,7 @@
   "rewrites": [
     {
       "source": "/property/:id",
-      "destination": "/api/render"
+      "destination": "/api/render?id=:id"
     }
   ]
 }
