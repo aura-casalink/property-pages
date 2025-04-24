@@ -8,6 +8,10 @@
   ],
   "routes": [
     {
+      "src": "/property/(?P<id>[^/]+)",
+      "dest": "/api/render?id=$id"
+    },
+    {
       "src": "/api/(.*)",
       "dest": "/api/$1"
     }
