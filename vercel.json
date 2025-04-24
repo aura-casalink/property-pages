@@ -8,8 +8,8 @@
   ],
   "rewrites": [
     {
-      "source": "/:id",
-      "destination": "/api/render?id=:id"
+      "source": "/:property_id/:sessionId",
+      "destination": "/api/render?id=:property_id&session=:sessionId"
     }
   ]
 }
