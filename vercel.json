@@ -8,7 +8,7 @@
   ],
   "rewrites": [
     {
-      "source": "/property/:id",
+      "source": "/:id",
       "destination": "/api/render?id=:id"
     }
   ]
